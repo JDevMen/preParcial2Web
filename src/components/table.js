@@ -3,8 +3,7 @@ import Table from "react-bootstrap/Table";
 class TableComponent extends Component {
   render() {
     return (
-      <div>
-        <h1>Table</h1>
+      <div id="tabla">
         <Table striped bordered hover>
           <thead>
             <tr>
