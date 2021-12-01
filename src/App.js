@@ -2,7 +2,7 @@ import logo from "./assets/video-camera.png";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar } from "react-bootstrap";
-import Table from "./components/table";
+import TableComponent from "./components/table";
 
 function App() {
   return (
@@ -13,23 +13,7 @@ function App() {
           Movies
         </Navbar.Brand>
       </Navbar>
-      <Table>
-        <tr>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
-        </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-        </tr>
-      </Table>
+      <TableComponent />
     </div>
   );
 }
