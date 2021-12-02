@@ -10,6 +10,14 @@ img {
 
 #tabla {
   margin-top: 1.5rem;
-  margin-left: 5rem;
+  /* margin-left: 5rem; */
   margin-right: 5rem;
+}
+
+#card {
+  /* display: none; */
+}
+
+.card {
+  margin-top: 1.5rem;
 }

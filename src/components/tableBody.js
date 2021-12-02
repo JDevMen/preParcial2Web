@@ -3,7 +3,7 @@ import { FormattedDate, FormattedNumber, FormattedPlural } from "react-intl";
 
 const TableBody = (props) => {
   return (
-    <tr>
+    <tr onClick={() => console.log(`Fila ${props.movie.id} presionada`)}>
       <th scope="row">{props.movie.id}</th>
       <td>{props.movie.name}</td>
       <td>{props.movie.directedBy}</td>

@@ -1,6 +1,8 @@
 import React, { Component, useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import TableBody from "./tableBody";
+import Image from "react-bootstrap/Image";
+
 function TableComponent() {
   const [movies, setMovies] = useState([]);
 
@@ -20,26 +22,54 @@ function TableComponent() {
   }, []);
 
   return (
-    <div id="tabla">
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Directed by</th>
-            <th>Country</th>
-            <th>Budget</th>
-            <th>Release</th>
-            <th>Views</th>
-          </tr>
-        </thead>
-        <tbody>
-          {console.log("movies", movies)}
-          {movies.map((e, i) => (
-            <TableBody key={i} movie={e} />
-          ))}
-        </tbody>
-      </Table>
+    <div className="container">
+      <div className="row">
+        <div className="col" id="tabla">
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Directed by</th>
+                <th>Country</th>
+                <th>Budget</th>
+                <th>Release</th>
+                <th>Views</th>
+              </tr>
+            </thead>
+            <tbody>
+              {console.log("movies", movies)}
+              {movies.map((e, i) => (
+                <TableBody key={i} movie={e} />
+              ))}
+            </tbody>
+          </Table>
+        </div>
+        <div className="col" id="card">
+          <div className="card">
+            <Image
+              className="card-img-top"
+              id="cardImage"
+              src="https://seocom.agency/wp-content/uploads/2019/02/bootstrap-stack.png"
+              alt="Card image cap"
+              fluid
+            />
+            <div className="card-body">
+              <h5 className="card-title" id="cardTitle">
+                Card title
+              </h5>
+              <p className="card-text" id="cardDescription">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+
+              <b className="card-text" id="cardFooter">
+                bold text
+              </b>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
