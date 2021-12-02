@@ -1,7 +1,6 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import TableBody from "./tableBody";
-import Image from "react-bootstrap/Image";
 import CardComponent from "./card";
 
 function TableComponent() {
