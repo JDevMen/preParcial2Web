@@ -6,6 +6,7 @@ import CardComponent from "./card";
 
 function TableComponent() {
   const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   const urlEsp =
     "https://gist.githubusercontent.com/josejbocanegra/f784b189117d214578ac2358eb0a01d7/raw/2b22960c3f203bdf4fac44cc7e3849689218b8c0/data-es.json";
@@ -21,11 +22,12 @@ function TableComponent() {
       })
       .catch((error) => console.error(error));
   }, []);
+  const isSelectedMovieNull = selectedMovie === null;
 
   return (
     <div className="container">
       <div className="row">
-        <div className="col" id="tabla">
+        <div className={`col-${isSelectedMovieNull ? "12" : "8"}`} id="tabla">
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -41,14 +43,20 @@ function TableComponent() {
             <tbody>
               {console.log("movies", movies)}
               {movies.map((e, i) => (
-                <TableBody key={i} movie={e} />
+                <TableBody
+                  key={i}
+                  movie={e}
+                  setSelectedMovie={setSelectedMovie}
+                />
               ))}
             </tbody>
           </Table>
         </div>
-        <div className="col" id="card">
-          <CardComponent />
-        </div>
+        {!isSelectedMovieNull && (
+          <div className="col" id="card">
+            <CardComponent selectedMovie={selectedMovie} />
+          </div>
+        )}
       </div>
     </div>
   );
