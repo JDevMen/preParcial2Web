@@ -1,5 +1,10 @@
 import React from "react";
-import { FormattedDate, FormattedNumber, FormattedPlural } from "react-intl";
+import {
+  FormattedDate,
+  FormattedNumber,
+  FormattedPlural,
+  FormattedMessage,
+} from "react-intl";
 
 const TableBody = (props) => {
   return (
@@ -15,13 +20,16 @@ const TableBody = (props) => {
         {props.movie.budget}
         <FormattedPlural
           value={props.movie.budget}
-          one=" million"
-          other=" millions"
+          one={<FormattedMessage id="Million" />}
+          other={<FormattedMessage id="Millions" />}
         />
       </td>
       <td>
         <FormattedDate
           value={new Date(props.movie.releaseDate)}
+          year="numeric"
+          month="numeric"
+          day="numeric"
         ></FormattedDate>
       </td>
       <td>

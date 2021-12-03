@@ -2,6 +2,21 @@ import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import TableBody from "./tableBody";
 import CardComponent from "./card";
+import { FormattedMessage } from "react-intl";
+
+function browserLanguage() {
+  let lang = navigator.language || navigator.userLanguage;
+
+  if (lang.startsWith("es")) {
+    return "es";
+  } else if (lang.startsWith("en")) {
+    return "en";
+  } else {
+    return "en";
+  }
+}
+
+console.log("Table console", browserLanguage());
 
 function TableComponent() {
   const [movies, setMovies] = useState([]);
@@ -12,8 +27,15 @@ function TableComponent() {
   const urlEng =
     "https://gist.githubusercontent.com/josejbocanegra/8b436480129d2cb8d81196050d485c56/raw/48cc65480675bf8b144d89ecb8bcd663b05e1db0/data-en.json";
 
+  let url = "";
+
+  if (browserLanguage() === "es") url = urlEsp;
+  else if (browserLanguage() === "en") url = urlEng;
+  else url = "";
+
+  console.log("urlll", url);
   useEffect(() => {
-    fetch(urlEng)
+    fetch(url)
       .then((resp) => resp.json())
       .then((jsonData) => {
         console.log("JSON Data", jsonData);
@@ -31,12 +53,24 @@ function TableComponent() {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Directed by</th>
-                <th>Country</th>
-                <th>Budget</th>
-                <th>Release</th>
-                <th>Views</th>
+                <th>
+                  <FormattedMessage id="Name" />
+                </th>
+                <th>
+                  <FormattedMessage id="Directed by" />
+                </th>
+                <th>
+                  <FormattedMessage id="Country" />
+                </th>
+                <th>
+                  <FormattedMessage id="Budget" />
+                </th>
+                <th>
+                  <FormattedMessage id="Release" />
+                </th>
+                <th>
+                  <FormattedMessage id="Views" />
+                </th>
               </tr>
             </thead>
             <tbody>
