@@ -36,13 +36,22 @@ function TableComponent() {
 
   console.log("urlll", url);
   useEffect(() => {
-    fetch(url)
-      .then((resp) => resp.json())
-      .then((jsonData) => {
-        console.log("JSON Data", jsonData);
-        setMovies(jsonData);
-      })
-      .catch((error) => console.error(error));
+    if (!navigator.onLine) {
+      if (localStorage.getItem("movies") === null) {
+        setMovies([]);
+      } else {
+        setMovies(JSON.parse(localStorage.getItem("movies")));
+      }
+    } else {
+      fetch(url)
+        .then((resp) => resp.json())
+        .then((jsonData) => {
+          console.log("JSON Data", jsonData);
+          localStorage.setItem("movies", JSON.stringify(jsonData));
+          setMovies(jsonData);
+        })
+        .catch((error) => console.error(error));
+    }
   }, []);
   const isSelectedMovieNull = selectedMovie === null;
 
