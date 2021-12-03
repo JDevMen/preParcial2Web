@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table";
 import TableBody from "./tableBody";
 import CardComponent from "./card";
 import { FormattedMessage } from "react-intl";
+import BarChart from "./barChart";
 
 function browserLanguage() {
   let lang = navigator.language || navigator.userLanguage;
@@ -91,6 +92,7 @@ function TableComponent() {
           </div>
         )}
       </div>
+      <BarChart movies={movies} />
     </div>
   );
 }
